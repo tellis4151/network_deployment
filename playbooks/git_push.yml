@@ -1,0 +1,40 @@
+---
+- name: Updating Git Repository with backup config
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_files:
+    - /var/lib/awx/backups/git.yml
+  
+  tasks:
+  - name: git add all new files
+    shell: git add -A
+    args:
+      chdir: "/var/lib/awx/backups/network_deployment"
+
+  - name: git status
+    shell: git status
+    args:
+      chdir: "/var/lib/awx/backups/network_deployment"
+    register: git_add_status
+
+  - name: Set global config for username
+    shell: git config --global user.name "tellis4151"
+    args:
+      chdir: "/var/lib/awx/backups/network_deployment"
+
+  - name: Set Global config for email address
+    shell : git config --global user.email "troyellis3@gmail.com"
+    args:
+      chdir: "/var/lib/awx/backups/network_deployment"
+
+  - name: git commit
+    shell: git commit -m "Checking in Router Config"
+    args:
+      chdir: "/var/lib/awx/backups/network_deployment"
+
+  - name: git push
+    shell: git push https://{{ username }}:{{ password }}@github.com/tellis4151/network_deployment.git
+    args:
+      chdir: "/var/lib/awx/backups/network_deployment"
+
