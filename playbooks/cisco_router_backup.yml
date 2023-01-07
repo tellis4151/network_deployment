@@ -1,0 +1,25 @@
+---
+- name: Gather information from routers
+  hosts: cisco
+  gather_facts: false
+#  connection: local
+
+  tasks:
+  - name: Backup Router Config
+    cisco.ios.ios_command:
+      commands: show run
+    register: config
+  
+  - name: Ensuring back up file exists
+    file:
+      path: /var/lib/awx/backups
+      state: directory  
+ 
+  - name: Get timestamp
+    command: date +%Y%m%d%T
+    register: timestamp
+   
+  - name: Save output to specified directory
+    copy:
+      content: "{{ config.stdout[0] }}"
+      dest: "/var/lib/awx/backups/running-config_{{ inventory_hostname  }}.{{ timestamp.stdout }}.txt"

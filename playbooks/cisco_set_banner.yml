@@ -1,0 +1,18 @@
+---
+- name: Set Network Banner
+  hosts: cisco
+  gather_facts: no
+
+  tasks:
+  - name: Configure Network Banner
+    cisco.ios.ios_banner:
+      banner: login
+      text: |
+        ***********WARNING************
+        This Banner was configured by Ansible. The system is actively monitored.
+        By using this system, all users acknowledge notice of, and agreed to comply 
+        with Acceptable Use of Information Technlogy Policy. By continuing to use
+        this system you indicate your awareness of and consent to these terms and
+        conditions of use.
+        ****************************** 
+      state: present
