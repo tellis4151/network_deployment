@@ -16,4 +16,4 @@
   - name: Save output to specified directory
     copy:
       content: "{{ config.stdout[0] }}"
-      dest: "/var/lib/awx/backups/network_deployment/running-config_{{ inventory_hostname  }}.{{ timestamp.stdout }}.txt"
+      dest: "/var/lib/awx/backups/net_backups/running-config_{{ inventory_hostname  }}.{{ timestamp.stdout }}.txt"
