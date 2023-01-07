@@ -7,6 +7,11 @@
     - /var/lib/awx/backups/git.yml
   
   tasks:
+  - name: git pull 
+    shell: git pull 
+    args:
+      chdir: "/var/lib/awx/backups/network_deployment"
+
   - name: git add all new files
     shell: git add -A
     args:
