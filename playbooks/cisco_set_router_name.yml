@@ -7,4 +7,4 @@
   - name: Setting up Hostname
     cisco.ios.ios_config:
       lines: 
-      - hostname router-rhte-demo
+      - hostname dmz-router-1
