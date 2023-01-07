@@ -34,7 +34,7 @@
       chdir: "/var/lib/awx/backups/net_backups"
 
   - name: git push
-    shell: git push https://{{ username }}:{{ password }}@github.com/tellis4151/network_deployment.git
+    shell: git push https://{{ username }}:{{ password }}@github.com/tellis4151/net_backups.git
     args:
       chdir: "/var/lib/awx/backups/net_backups"
 
