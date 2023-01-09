@@ -7,4 +7,4 @@
   - name: Setting up Hostname
     cisco.ios.ios_config:
       lines: 
-      - hostname dmz-rtr-demo-1
+      - hostname dmz-rtr-demo
