@@ -7,8 +7,7 @@
   - name: Create Network Operator User        
     cisco.ios.ios_user:
       name: netadmin
-      hashed_password: 
-        type: 5
-        value: 07afcac93fe75ee3766af646b74a0939
+      configured_password: net_password
+      password_type: password
       privilege: 15
       state: present
